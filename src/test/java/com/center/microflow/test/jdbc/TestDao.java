@@ -6,12 +6,11 @@ import org.springframework.transaction.support.TransactionTemplate;
 
 import java.util.List;
 
-public class TestDao{
+public class TestDao {
 
     private PlatformTransactionManager transactionManager;
 
     private JdbcTemplate jdbcTemplate;
-
 
 
     public List<TestBean> queryAll() {
@@ -56,8 +55,7 @@ public class TestDao{
         return query.get(0);
     }
 
-    public void tran(final TestBean bean)
-    {
+    public void tran(final TestBean bean) {
         TransactionTemplate tt = new TransactionTemplate();
 
         tt.setTransactionManager(transactionManager);

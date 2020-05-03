@@ -18,7 +18,7 @@ public class ExceptionVertex implements OrderVertex {
     }
 
     @Override
-    public void then(OrderBo orderBo)  {
+    public void then(OrderBo orderBo) {
         throw new MicroFlowRuntimeException("F001", "exception");
     }
 
