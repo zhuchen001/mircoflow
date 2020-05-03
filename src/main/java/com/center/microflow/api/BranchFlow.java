@@ -46,7 +46,7 @@ public interface BranchFlow<T extends Serializable> {
 
     BranchFlow<T> addBranch(IBranch decide, List<IVertex<T>> vertexList, ITransactionManager transactionManager);
 
-    BranchFlow<T> addBranch( IBranch decide, IVertex<T> vertex);
+    BranchFlow<T> addBranch(IBranch decide, IVertex<T> vertex);
 
     BranchFlow<T> addBranch(IBranch decide, IVertex<T> vertex, ITransactionManager transactionManager);
 

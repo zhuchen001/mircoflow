@@ -26,10 +26,10 @@ public class BreakBean implements Serializable {
      */
     private String message;
 
-	/**
-	 * 流程名称
-	 */
-	private String flowName;
+    /**
+     * 流程名称
+     */
+    private String flowName;
 
     public BreakBean() {
     }

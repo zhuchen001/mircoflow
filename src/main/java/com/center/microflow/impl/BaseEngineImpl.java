@@ -154,15 +154,13 @@ public abstract class BaseEngineImpl<T extends Serializable> {
         ParallelExecute parallelExecute = result.getParallelExecute();
 
         // 如果执行点变化了，则merge并行执行结果(fork不在内)
-        if (!parallelExecute.isSameParallel(parallelPoint) && parallelExecute.canMerge())
-        {
+        if (!parallelExecute.isSameParallel(parallelPoint) && parallelExecute.canMerge()) {
             parallelExecute.merge(bo);
 
             // 如果merge异常，可能是执行超时或者执行异常
             Exception mergeException = parallelExecute.getMergeException();
 
-            if (mergeException != null)
-            {
+            if (mergeException != null) {
                 throw mergeException;
             }
 
@@ -192,7 +190,7 @@ public abstract class BaseEngineImpl<T extends Serializable> {
 
             // 设置执行点标识
             parallelExecute.setPoint(parallelPoint);
-            parallelExecute.addParallelInfo(event, (ParallelVertex)vertex, parallel);
+            parallelExecute.addParallelInfo(event, (ParallelVertex) vertex, parallel);
         }
 
         if (vertex.type() == VertexType.FORK) {
@@ -200,13 +198,12 @@ public abstract class BaseEngineImpl<T extends Serializable> {
             Future<T> parallel = MicroFlowEntrustBootstrap.getMicroFlowParallelProcess()
                     .parallel(event);
 
-            result.getForkExecute().addParallelInfo(event, (ParallelVertex)vertex, parallel);
+            result.getForkExecute().addParallelInfo(event, (ParallelVertex) vertex, parallel);
         }
 
     }
 
-    private String getParallelPoint(Stage stage, IVertex vertex)
-    {
+    private String getParallelPoint(Stage stage, IVertex vertex) {
         return stage.getName() + '-' + vertex.order().toString();
     }
 

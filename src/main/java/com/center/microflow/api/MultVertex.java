@@ -4,6 +4,7 @@ import java.io.Serializable;
 
 /**
  * 复用的算子
+ *
  * @param <T> 流程BO
  * @param <R> 抽象后可复用的BO
  */

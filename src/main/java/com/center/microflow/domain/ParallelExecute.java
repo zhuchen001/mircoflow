@@ -34,8 +34,7 @@ public class ParallelExecute<T extends Serializable> {
         return point.equals(this.point);
     }
 
-    public boolean canMerge()
-    {
+    public boolean canMerge() {
         return !infoList.isEmpty();
     }
 
@@ -44,8 +43,7 @@ public class ParallelExecute<T extends Serializable> {
     }
 
     public void merge(T context) {
-        if (infoList.isEmpty())
-        {
+        if (infoList.isEmpty()) {
             return;
         }
 

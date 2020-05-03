@@ -77,8 +77,7 @@ public class BranchFlowImpl<T extends Serializable> extends BaseEngineImpl<T> im
         return addBranchElementInner(new BranchElement(getBranchElementName(decide), VertexEnum.BRANCH, decide, branch, transactionManager));
     }
 
-    private String getBranchElementName(IBranch decide)
-    {
+    private String getBranchElementName(IBranch decide) {
         return this.name + '-' + decide;
     }
 
