@@ -57,7 +57,7 @@ public class MicroFlowParallelProcessSpringImpl implements MicroFlowParallelProc
      * 关闭线程池
      */
     @PreDestroy
-    public void destory() {
+    public void destroy() {
         threadPoolTaskExecutor.shutdown();
     }
 

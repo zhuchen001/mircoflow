@@ -75,7 +75,7 @@ public class MicroFlowAsynMemeryProcessSpringImpl implements MicroFlowAsynMemery
      * 关闭线程池
      */
     @PreDestroy
-    public void destory() {
+    public void destroy() {
         this.running = false;
         scheduledThreadPool.shutdown();
         threadPoolTaskExecutor.shutdown();
