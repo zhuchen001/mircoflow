@@ -2,6 +2,7 @@
 微流程引擎
 
 # code
+```java
 MicroFlow<OrderBo> microFlow = MicroFlowEngineFactory.createMicroFlow("order-flow", OrderBo.class, true);
 
         microFlow.addStage(StageConstant.PREPARE, OrderGroup.PREPARE)
@@ -14,4 +15,5 @@ MicroFlow<OrderBo> microFlow = MicroFlowEngineFactory.createMicroFlow("order-flo
         bo.setName("zhuzhu");
 
         ExecuteResult execute = microFlow.execute(bo);
+   ```
 
