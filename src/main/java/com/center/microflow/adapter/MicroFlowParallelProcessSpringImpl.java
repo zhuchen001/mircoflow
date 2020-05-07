@@ -61,13 +61,7 @@ public class MicroFlowParallelProcessSpringImpl implements MicroFlowParallelProc
         threadPoolTaskExecutor.shutdown();
     }
 
-    /*
-     * (non-Javadoc)
-     *
-     * @see
-     * org.springframework.context.ApplicationContextAware#setApplicationContext(org
-     * .springframework.context.ApplicationContext)
-     */
+
     @Override
     public void setApplicationContext(ApplicationContext arg0) throws BeansException {
         MicroFlowEntrustBootstrap.setMicroFlowParallelProcess(this);

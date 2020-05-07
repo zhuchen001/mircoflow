@@ -25,10 +25,12 @@ public interface ParallelVertex<T extends Serializable> extends IVertex<T> {
         return DEFAULT_TIMEOUT;
     }
 
+    @Override
     default void setBreak(String message) {
         throw new UnsupportedOperationException("Can not support setBreak");
     }
 
+    @Override
     default VertexType type() {
         return VertexType.PARALLEL;
     }
