@@ -20,10 +20,12 @@ public abstract class AssertUtils {
      * @param actual
      */
     public static <T> void assertEquals(T expected, T actual) {
-        if (expected == null && actual == null)
+        if (expected == null && actual == null) {
             return;
-        if (expected != null && expected.equals(actual))
+        }
+        if (expected != null && expected.equals(actual)) {
             return;
+        }
 
         throw new MicroFlowRuntimeException("Assert Exception, expected:" + expected + ",and actual:" + actual);
     }
