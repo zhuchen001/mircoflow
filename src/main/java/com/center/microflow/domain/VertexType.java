@@ -10,13 +10,10 @@ package com.center.microflow.domain;
  *
  */
 public enum VertexType {
-    /**
-     * 同步算子（默认）
-     */
+    /**同步算子（默认）*/
     SYN,
-    /**
-     * 异步算子（内存）
-     */
+
+    /**异步算子（内存）*/
     ASYN_MEM,
     /**
      * 异步算子（持久化）
