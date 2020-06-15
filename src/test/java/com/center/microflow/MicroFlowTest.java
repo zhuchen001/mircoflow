@@ -12,7 +12,13 @@ import org.junit.After;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
+import org.junit.runner.RunWith;
+import org.junit.runners.JUnit4;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
+import org.springframework.test.context.ContextConfiguration;
+import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -21,17 +27,20 @@ import java.util.List;
 /**
  * Unit test for simple App.
  */
+@RunWith(SpringJUnit4ClassRunner.class)
+@ContextConfiguration(locations = { "classpath:applicationContext.xml"})
 public class MicroFlowTest {
-    private ClassPathXmlApplicationContext context;
+    @Autowired
+    private ApplicationContext context;
 
     @Before
     public void before() {
-        this.context = new ClassPathXmlApplicationContext("classpath:applicationContext.xml");
+        //this.context = new ClassPathXmlApplicationContext("classpath:applicationContext.xml");
     }
 
     @After
     public void after() {
-        this.context.close();
+        //this.context.close();
     }
 
     /**
