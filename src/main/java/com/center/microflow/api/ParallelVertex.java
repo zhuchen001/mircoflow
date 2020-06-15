@@ -27,7 +27,7 @@ public interface ParallelVertex<T extends Serializable> extends IVertex<T> {
     void merge(T futureBo, T context);
 
     /**
-     * 设置超时时间
+     * 设置超时时间（MILLISECONDS）
      * @return 默认DEFAULT_TIMEOUT
      */
     default long timeout() {

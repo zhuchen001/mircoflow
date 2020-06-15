@@ -36,17 +36,10 @@ public class MicroFlowParallelProcessSpringPlusImpl implements MicroFlowParallel
     private ThreadPoolTaskExecutor defaultThreadPoolTaskExecutor = null;
 
     /**
-     * 允许给指定的微流程自定义线程池
+     * 允许给指定的微流程自定义并行执行线程池
      */
     private Map<String, ThreadPoolTaskExecutor> threadPoolTaskExecutorMap = new HashMap<>();
 
-    /*
-     * (non-Javadoc)
-     *
-     * @see
-     * org.springframework.context.ApplicationContextAware#setApplicationContext(org
-     * .springframework.context.ApplicationContext)
-     */
     @Override
     public void setApplicationContext(ApplicationContext arg0) throws BeansException {
         MicroFlowEntrustBootstrap.setMicroFlowParallelProcess(this);
