@@ -3,17 +3,19 @@ package com.center.microflow.api;
 import java.io.Serializable;
 
 /**
- * 复用的算子
+ * 复用的算子(即一个算子被多个微流程使用)
  *
  * @param <T> 流程BO
  * @param <R> 抽象后可复用的BO
  */
 public interface MultVertex<T extends Serializable, R extends Serializable> extends IVertex<T> {
 
+    @Override
     default boolean when(T t) {
         return getVertex().when(transferBo(t));
     }
 
+    @Override
     default void then(T t) throws Exception {
         R r = transferBo(t);
         getVertex().then(r);

@@ -14,6 +14,11 @@ import java.io.Serializable;
  *
  */
 public interface ForkVertex<T extends Serializable> extends ParallelVertex<T> {
+    /**
+     * 返回默认FORK类型
+     *
+     * @return 默认FORK类型
+     */
     @Override
     default VertexType type() {
         return VertexType.FORK;
