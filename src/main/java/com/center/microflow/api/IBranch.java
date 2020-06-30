@@ -9,6 +9,6 @@ package com.center.microflow.api;
  * @author Administrator
  *
  */
-public interface IBranch {
+public interface IBranch  {
 
 }

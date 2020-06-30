@@ -28,12 +28,12 @@ public interface BranchFlow<T extends Serializable> {
      * @param group
      * @return
      */
-    BranchFlow<T> addBranch(IBranch decide, GroupEnum group);
+    <V extends Enum & IBranch>BranchFlow<T> addBranch(V decide, GroupEnum group);
 
     /**
      * 增加分支判断条件(支持事务)
      */
-    BranchFlow<T> addBranch(IBranch decide, GroupEnum group, ITransactionManager transactionManager);
+    <V extends Enum & IBranch>BranchFlow<T> addBranch(V decide, GroupEnum group, ITransactionManager transactionManager);
 
     /**
      * 增加一个分支条件下的处理
@@ -42,13 +42,13 @@ public interface BranchFlow<T extends Serializable> {
      * @param vertexList
      * @return
      */
-    BranchFlow<T> addBranch(IBranch decide, List<IVertex<T>> vertexList);
+    <V extends Enum & IBranch>BranchFlow<T> addBranch(V decide, List<IVertex<T>> vertexList);
 
-    BranchFlow<T> addBranch(IBranch decide, List<IVertex<T>> vertexList, ITransactionManager transactionManager);
+    <V extends Enum & IBranch>BranchFlow<T> addBranch(V decide, List<IVertex<T>> vertexList, ITransactionManager transactionManager);
 
-    BranchFlow<T> addBranch(IBranch decide, IVertex<T> vertex);
+    <V extends Enum & IBranch>BranchFlow<T> addBranch(V decide, IVertex<T> vertex);
 
-    BranchFlow<T> addBranch(IBranch decide, IVertex<T> vertex, ITransactionManager transactionManager);
+    <V extends Enum & IBranch>BranchFlow<T> addBranch(V decide, IVertex<T> vertex, ITransactionManager transactionManager);
 
 
     /**
@@ -57,9 +57,9 @@ public interface BranchFlow<T extends Serializable> {
      * @param branch
      * @return
      */
-    BranchFlow<T> addBranch(IBranch decide, BranchFlow<T> branch);
+    <V extends Enum & IBranch>BranchFlow<T> addBranch(V decide, BranchFlow<T> branch);
 
-    BranchFlow<T> addBranch(IBranch decide, BranchFlow<T> branch, ITransactionManager transactionManager);
+    <V extends Enum & IBranch>BranchFlow<T> addBranch(V decide, BranchFlow<T> branch, ITransactionManager transactionManager);
 
 
     /**
