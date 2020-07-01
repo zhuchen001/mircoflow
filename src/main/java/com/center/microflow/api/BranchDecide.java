@@ -11,7 +11,7 @@ import java.io.Serializable;
  * @author Administrator
  *
  */
-public interface BranchDecide<T extends Serializable> {
+public interface BranchDecide<T extends Serializable, B extends Enum & IBranch> {
 
     /**
      * 分支判断
@@ -20,6 +20,6 @@ public interface BranchDecide<T extends Serializable> {
      *            上下文
      * @return 判断结果
      */
-    IBranch decide(T t);
+    B decide(T t);
 
 }

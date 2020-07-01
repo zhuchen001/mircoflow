@@ -20,7 +20,7 @@ public class BranchFlowImpl<T extends Serializable> extends BaseEngineImpl<T> im
 
     private Map<IBranch, BranchElement> branchElementMap = new HashMap<>();
 
-    private BranchDecide<T> decide;
+    private BranchDecide<T, ?> decide;
 
     protected String name;
 
@@ -29,7 +29,7 @@ public class BranchFlowImpl<T extends Serializable> extends BaseEngineImpl<T> im
     }
 
     @Override
-    public BranchFlowImpl<T> setDecide(BranchDecide<T> decide) {
+    public <B extends Enum & IBranch> BranchFlowImpl<T> setDecide(BranchDecide<T, B> decide) {
         this.decide = decide;
         return this;
     }

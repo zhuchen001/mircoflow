@@ -5,6 +5,7 @@ package com.center.microflow.factory;
 
 import com.center.microflow.api.BranchDecide;
 import com.center.microflow.api.BranchFlow;
+import com.center.microflow.api.IBranch;
 import com.center.microflow.api.MicroFlow;
 import com.center.microflow.impl.BranchFlowImpl;
 import com.center.microflow.impl.MicroFlowEngineImpl;
@@ -38,7 +39,7 @@ public abstract class MicroFlowEngineFactory {
     /**
      * 构建新的分支处理
      */
-    public static <T extends Serializable> BranchFlow<T> createBranchFlow(String name, BranchDecide<T> decide, Class<T> claz) {
+    public static <T extends Serializable, B extends Enum & IBranch> BranchFlow<T> createBranchFlow(String name, BranchDecide<T, B> decide, Class<T> claz) {
         BranchFlowImpl<T> branch = new BranchFlowImpl<T>(name);
 
         branch.setDecide(decide);
