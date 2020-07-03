@@ -112,7 +112,7 @@ public class BranchFlowImpl<T extends Serializable> extends BaseEngineImpl<T> im
     }
 
     private BranchFlowImpl<T> addBranchElementInner(BranchElement element) {
-        this.branchElementMap.put(element.getDecide(), element);
+        this.branchElementMap.put(element.getBranch(), element);
         return this;
     }
 

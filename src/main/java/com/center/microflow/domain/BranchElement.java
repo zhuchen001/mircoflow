@@ -14,7 +14,7 @@ import com.center.microflow.api.ITransactionManager;
  */
 public class BranchElement extends Stage {
 
-    private IBranch decide;
+    private IBranch branch;
 
 
     public BranchElement(String name, VertexEnum type, IBranch decide, Object vertex) {
@@ -23,15 +23,15 @@ public class BranchElement extends Stage {
 
     public BranchElement(String name, VertexEnum type, IBranch decide, Object vertex, ITransactionManager transactionManager) {
         super(name, 0, type, vertex, transactionManager);
-        this.decide = decide;
+        this.branch = decide;
     }
 
-    public IBranch getDecide() {
-        return decide;
+    public IBranch getBranch() {
+        return branch;
     }
 
-    public void setDecide(IBranch decide) {
-        this.decide = decide;
+    public void setBranch(IBranch branch) {
+        this.branch = branch;
     }
 
 
