@@ -5,6 +5,7 @@ import com.center.microflow.api.IVertex;
 import com.center.microflow.api.MicroFlow;
 import com.center.microflow.constant.StageConstant;
 import com.center.microflow.domain.ExecuteResult;
+import com.center.microflow.domain.MicroflowThreadLocal;
 import com.center.microflow.factory.MicroFlowEngineFactory;
 import com.center.microflow.test.*;
 import com.center.microflow.test.jdbc.PrepareNoneVertex;
@@ -40,6 +41,8 @@ public class MicroFlowTest {
 
     @After
     public void after() {
+        // 流程执行成功后，上下文清理结束
+        Assert.assertEquals(true, MicroflowThreadLocal.isEmpty());
         //this.context.close();
     }
 
@@ -111,6 +114,48 @@ public class MicroFlowTest {
         Assert.assertEquals("456", bo.getId());
         Assert.assertEquals(3, execute.getVertexTrackList().size());
         Assert.assertEquals("desc", bo.getDesc());
+    }
+
+    @Test
+    public void testFlowSubFlowBreak() {
+
+        MicroFlow<OrderBo> microFlow = MicroFlowEngineFactory.createMicroFlow("order-flow", OrderBo.class, true);
+
+        MicroFlow<OrderBo> subMicroFlow = MicroFlowEngineFactory.createMicroFlow("order-sub-flow", OrderBo.class, true);
+
+        subMicroFlow.addStage(StageConstant.PREPARE, OrderGroup.PREPARE)
+            .addStage(StageConstant.PROCESS, new BreakVertex())
+            .addStage(StageConstant.PERSISTENT, OrderGroup.FREE);
+
+        microFlow.addStage(StageConstant.PREPARE, OrderGroup.PREPARE)
+            .addStage(StageConstant.PROCESS, subMicroFlow)
+            .addStage(StageConstant.PERSISTENT, OrderGroup.PRISTEND);
+
+        OrderBo bo = null;
+
+        ExecuteResult execute = null;
+
+        bo = new OrderBo();
+        bo.setId("123");
+        bo.setName("zhuzhu");
+        bo.setDesc("desc");
+        bo.setPayInfo("default");
+        bo.setType(0);
+
+        execute = microFlow.execute(bo);
+
+        //System.out.println(execute.toString2());
+
+        // 子流程退出不影响主流程
+        Assert.assertEquals(true, execute.isSuccess());
+        Assert.assertEquals("store", bo.getDesc());
+        // 子流程也要增加一个init
+        Assert.assertEquals(6, execute.getVertexTrackList().size());
+
+        // 子流程break后的算子不在内
+        Assert.assertEquals("default", bo.getPayInfo());
+
+
     }
 
     @Test
@@ -277,7 +322,8 @@ public class MicroFlowTest {
 
         Assert.assertEquals(true, execute.isSuccess());
         Assert.assertEquals("store", bo.getDesc());
-        Assert.assertEquals(5, execute.getVertexTrackList().size());
+        // 子流程也要增加一个init
+        Assert.assertEquals(6, execute.getVertexTrackList().size());
         Assert.assertEquals("free", bo.getPayInfo());
 
     }

@@ -1,11 +1,13 @@
 package com.center.microflow.test;
 
+import com.center.microflow.api.Desc;
 import com.center.microflow.api.GroupEnum;
 import com.center.microflow.api.ParallelVertex;
 import org.springframework.stereotype.Component;
 
 import java.math.BigDecimal;
 
+@Desc(value = "Test")
 @Component
 public class ParallelVerter1 implements ParallelVertex<OrderBo> {
     @Override

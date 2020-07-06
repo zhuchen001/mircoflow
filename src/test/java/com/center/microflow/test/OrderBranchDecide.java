@@ -1,8 +1,10 @@
 package com.center.microflow.test;
 
 import com.center.microflow.api.BranchDecide;
+import com.center.microflow.api.Desc;
 import com.center.microflow.api.IBranch;
 
+@Desc("分支判断")
 public class OrderBranchDecide implements BranchDecide<OrderBo, OrderBranch> {
 
     @Override

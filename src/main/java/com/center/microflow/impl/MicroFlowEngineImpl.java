@@ -92,23 +92,14 @@ public class MicroFlowEngineImpl<T extends Serializable> extends BaseEngineImpl<
 
         ExecuteResult result = new ExecuteResult();
 
-        BreakBean breakBean = null;
-
         try {
-            // 加入中断上下文(子流程这里返回null)
-            breakBean = MicroflowThreadLocal.init();
+            // 设置break的线程上下文
+            MicroflowThreadLocal.init(getName());
 
-            // 如果是子流程执行，那么不需要再次init
-            if (breakBean != null) {
-
-                // 设置流程名称
-                MicroflowThreadLocal.setFlowName(getName());
-
-                if (this.debug) {
-                    result.initVertexTrack(t.toString());
-                } else {
-                    result.initVertexTrack(null);
-                }
+            if (this.debug) {
+                result.initVertexTrack(t.toString());
+            } else {
+                result.initVertexTrack(null);
             }
 
             for (Stage stage : this.stageList) {
@@ -135,10 +126,8 @@ public class MicroFlowEngineImpl<T extends Serializable> extends BaseEngineImpl<
             //捕获所有异常，直接退出算子执行
             result.setException(e);
         } finally {
-            result.setBreakBean(MicroflowThreadLocal.get());
-
-            // 删除中断上下文(如果存在子流程，这里不能remove,核心由remove方法实现)
-            MicroflowThreadLocal.remove(breakBean);
+            // 删除中断上下文
+            result.setBreakBean(MicroflowThreadLocal.remove());
         }
 
         if (this.debug) {
