@@ -26,6 +26,7 @@ import java.util.List;
 
 
 /**
+ *
  * Unit test for simple App.
  */
 @RunWith(SpringJUnit4ClassRunner.class)
