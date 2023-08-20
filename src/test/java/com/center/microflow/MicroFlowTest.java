@@ -26,8 +26,7 @@ import java.util.List;
 
 
 /**
- * Hello2
- * Unit test for simple App.
+ * MicroFlowTest Unit test
  */
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration(locations = { "classpath:applicationContext.xml"})
