@@ -16,6 +16,7 @@ public interface IVertex<T extends Serializable> extends IExecute<T>, ICondition
 
     /**
      * 执行顺序
+     * @see com.center.microflow.constant.VertexOrder
      */
     BigDecimal order();
 
