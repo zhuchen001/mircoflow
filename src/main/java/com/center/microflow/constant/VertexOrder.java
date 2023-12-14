@@ -3,6 +3,8 @@
  */
 package com.center.microflow.constant;
 
+import java.math.BigDecimal;
+
 /**
  * 算子执行顺序（数值越小优先执行，即升序执行）
  *
@@ -11,16 +13,16 @@ package com.center.microflow.constant;
  */
 public interface VertexOrder {
 
-    int ORDER_0 = 0;
-    int ORDER_1 = 1;
-    int ORDER_2 = 2;
-    int ORDER_3 = 3;
-    int ORDER_4 = 4;
-    int ORDER_5 = 5;
-    int ORDER_6 = 6;
-    int ORDER_7 = 7;
-    int ORDER_8 = 8;
-    int ORDER_9 = 9;
-    int ORDER_10 = 10;
+    BigDecimal ORDER_0 = new BigDecimal(0);
+    BigDecimal ORDER_1 = new BigDecimal(1);
+    BigDecimal ORDER_2 = new BigDecimal(2);
+    BigDecimal ORDER_3 = new BigDecimal(3);
+    BigDecimal ORDER_4 = new BigDecimal(4);
+    BigDecimal ORDER_5 = new BigDecimal(5);
+    BigDecimal ORDER_6 = new BigDecimal(6);
+    BigDecimal ORDER_7 = new BigDecimal(7);
+    BigDecimal ORDER_8 = new BigDecimal(8);
+    BigDecimal ORDER_9 = new BigDecimal(9);
+    BigDecimal ORDER_10 = new BigDecimal(10);
 
 }
